@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import br.edu.ifba.demo.backend.api.dto.LivroDTO;
 import br.edu.ifba.demo.backend.api.model.LivroModel;
 import br.edu.ifba.demo.backend.api.repository.LivroRepository;
 
@@ -70,7 +70,7 @@ public class LivroController {
 
     // Método que retornar o livro associado ao isbn passado como parametro
 	@GetMapping("/isbn/{isbn}")
-    public LivroModel findByIsbn(@PathVariable("isbn") String isbn) {
+    public ResponseEntity<Object> findByIsbn(@PathVariable("isbn") String isbn) {
         var livro = livroRepository.findByIsbn(isbn);
         if (livro == null){
             return ResponseEntity.notFound().build();

@@ -51,6 +51,11 @@ public class UsuarioController {
         return null;
     }
 
+	@GetMapping("/index")
+	public String index() {
+		return "index";
+	}
+
 	@PostMapping("login")
     public ResponseEntity<UsuarioDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
         Optional<UsuarioModel> usuario = usuRepository.findByLogin(loginRequestDTO.getLogin());
