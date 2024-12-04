@@ -35,15 +35,15 @@ public class UsuarioController {
 		return "Testando Rota Usuario";
 	}
 	
-	// Método que retornar todos os usuarios do banco de dados
+	
 	@GetMapping("/listall")
 	public List<UsuarioModel> listall() {
 		var usuarios = usuRepository.findAll();
 		return usuarios;
 	}
 
-	// Método que retornar o usuario associado ao ID passado como parametro
-	@GetMapping("/findById/{id}")
+	
+	@GetMapping("id/{id}")
     public UsuarioModel findById(@PathVariable("id") Long id) {
 		Optional<UsuarioModel> usuario = usuRepository.findById(id);
 		if ( usuario.isPresent() )
@@ -74,7 +74,7 @@ public class UsuarioController {
         }
     }
 
-	// Método para adicionar um novo usuário
+	
 	@PostMapping
 	public ResponseEntity<UsuarioModel> addUsuario(@RequestBody UsuarioModel usuario) {
 		UsuarioModel savedUsuario = usuRepository.save(usuario);

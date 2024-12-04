@@ -37,7 +37,7 @@ public class LivroController {
 
     }
 
-    // Método que retornar todos os livros do banco de dados
+  
     @GetMapping("/listall")
     public List <LivroModel> listall(){
 
@@ -46,8 +46,8 @@ public class LivroController {
         
     }
 
-    // Método que retornar o livro associado ao ID passado como parametro
-    @GetMapping("/{id}")
+    
+    @GetMapping("/id/{id}")
     public LivroModel findById(@PathVariable ("id") Long id){
         Optional<LivroModel> livro = livroRepository.findById(id);
         if(livro.isPresent())
@@ -57,7 +57,7 @@ public class LivroController {
 
     }
 
-     // Método que retornar o livro associado ao titulo passado como parametro
+     
 	@GetMapping("/titulo/{titulo}")
     public ResponseEntity<Object> findByTitulo(@PathVariable("titulo") String titulo) {
         var livro = livroRepository.findByTituloContainingIgnoreCase(titulo);
@@ -68,7 +68,7 @@ public class LivroController {
             return ResponseEntity.ok(LivroDTO.converter(livro));
     }
 
-    // Método que retornar o livro associado ao isbn passado como parametro
+   
 	@GetMapping("/isbn/{isbn}")
     public ResponseEntity<Object> findByIsbn(@PathVariable("isbn") String isbn) {
         var livro = livroRepository.findByIsbn(isbn);
@@ -79,18 +79,17 @@ public class LivroController {
         return ResponseEntity.ok(LivroDTO.converter(livro));
     }
 
-    // Método para deletar pelo ID
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id) {
         if (livroRepository.existsById(id)) {
             livroRepository.deleteById(id);
-            return ResponseEntity.noContent().build(); // Retorna 204 No Content
+            return ResponseEntity.noContent().build(); 
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Retorna 404 Not Found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); 
         }
     }
     
-    //Metodo para adicionar um novo livro
+   
     @PostMapping
     public ResponseEntity<LivroModel> addLivro(@RequestBody LivroModel livro){
         
