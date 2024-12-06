@@ -15,7 +15,7 @@ public class LivroDTO {
     private String titulo;
     private String autor;
     private String editora;
-    private Date ano_publicacao;
+    private Integer ano_publicacao;
     private String genero;
     private String isbn;
     private String num_paginas;
@@ -65,7 +65,7 @@ public class LivroDTO {
     }
 
     public LivroDTO
-    (long id_livro, String titulo, String autor, String editora, Date ano_publicacao, 
+    (long id_livro, String titulo, String autor, String editora, Integer ano_publicacao, 
     String genero, String isbn, String num_paginas, String sinopse, String idioma,
     LocalDateTime data_cadastro, double preco){
 
@@ -126,12 +126,12 @@ public class LivroDTO {
     }
 
 
-    public Date getAno_publicacao() {
+    public Integer getAno_publicacao() {
         return ano_publicacao;
     }
 
 
-    public void setAno_publicacao(Date ano_publicacao) {
+    public void setAno_publicacao(Integer ano_publicacao) {
         this.ano_publicacao = ano_publicacao;
     }
 

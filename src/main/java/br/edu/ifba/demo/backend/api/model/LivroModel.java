@@ -33,8 +33,8 @@ public class LivroModel {
     @Column(name = "editora", nullable = true)
     private String editora;
    
-    @Column(name = "ano_publicacao", nullable = true)
-    private Date ano_publicacao;
+    @Column(name = "ano_publicacao")
+    private Integer ano_publicacao;
 
 
     @Column(name = "genero", nullable = true)
@@ -69,7 +69,7 @@ public class LivroModel {
         super();
     }
 
-    public LivroModel(long id_livro, String titulo, String autor, String editora, Date ano_publicacao, 
+    public LivroModel(long id_livro, String titulo, String autor, String editora, Integer ano_publicacao, 
     String genero, String isbn, String num_paginas, String sinopse, String idioma,
     LocalDateTime data_cadastro, double preco){
 

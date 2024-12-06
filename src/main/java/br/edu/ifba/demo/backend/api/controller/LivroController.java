@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import br.edu.ifba.demo.backend.api.model.LivroModel;
 import br.edu.ifba.demo.backend.api.repository.LivroRepository;
 
 @RestController
+@CrossOrigin("http://localhost:8080/")
 @RequestMapping("/livro")
 
 public class LivroController {
@@ -47,7 +49,7 @@ public class LivroController {
     }
 
     
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public LivroModel findById(@PathVariable ("id") Long id){
         Optional<LivroModel> livro = livroRepository.findById(id);
         if(livro.isPresent())
